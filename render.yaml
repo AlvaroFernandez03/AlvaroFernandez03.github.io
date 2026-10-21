@@ -1,0 +1,122 @@
+# Las cuatro demos del portfolio en Render (plan gratuito).
+#
+# Cómo se usa (está explicado paso a paso en PUBLICAR.md):
+#   Render → New → Blueprint → elige este repositorio → Apply.
+# Render crea los cuatro servicios a la vez, cada uno desde el repositorio de
+# su app. No hace falta poner ninguna clave: JWT_SECRET la genera Render.
+#
+# Todas llevan DEMO=1: la cinta con las cuentas de prueba, los cambios de
+# contraseña bloqueados y los datos de ejemplo. En el plan gratuito el disco
+# no se guarda, así que cada vez que una demo se duerme y despierta vuelve a
+# empezar con sus datos de ejemplo (por eso nadie puede "romperla").
+
+services:
+  # ---------------------------------------------------------------- AcademiaApp
+  - type: web
+    name: alvarofo-academia
+    runtime: node
+    plan: free
+    region: frankfurt
+    repo: https://github.com/AlvaroFernandez03/academiaapp
+    branch: main
+    buildCommand: cd backend && npm install --omit=dev
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: DEMO
+        value: "1"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@academia.com
+      - key: ACADEMY_NAME
+        value: Academia Tatami
+      - key: SEED_DEMO_DATA
+        value: "1"
+      - key: STRIPE_DEMO
+        value: "1"
+      - key: TRUST_PROXY
+        value: "1"
+      - key: FRONTEND_URL
+        value: https://alvarofo-academia.onrender.com
+      - key: PORTFOLIO_URL
+        value: https://alvarofernandez03.github.io/
+
+  # -------------------------------------------------------------------- Atelier
+  - type: web
+    name: alvarofo-atelier
+    runtime: node
+    plan: free
+    region: frankfurt
+    repo: https://github.com/AlvaroFernandez03/atelier
+    branch: main
+    buildCommand: cd backend && npm install --omit=dev
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: DEMO
+        value: "1"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@tienda.com
+      - key: FRONTEND_URL
+        value: https://alvarofo-atelier.onrender.com
+      - key: PORTFOLIO_URL
+        value: https://alvarofernandez03.github.io/
+
+  # ------------------------------------------------------------------- OfiTrack
+  - type: web
+    name: alvarofo-ofitrack
+    runtime: node
+    plan: free
+    region: frankfurt
+    repo: https://github.com/AlvaroFernandez03/ofitrack
+    branch: main
+    buildCommand: cd backend && npm install --omit=dev
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: DEMO
+        value: "1"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://alvarofo-ofitrack.onrender.com
+      - key: PORTFOLIO_URL
+        value: https://alvarofernandez03.github.io/
+
+  # ------------------------------------------------------------------- PowerGym
+  - type: web
+    name: alvarofo-powergym
+    runtime: node
+    plan: free
+    region: frankfurt
+    repo: https://github.com/AlvaroFernandez03/powergym
+    branch: main
+    buildCommand: cd backend && npm install --omit=dev
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: DEMO
+        value: "1"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@powergym.com
+      - key: FRONTEND_URL
+        value: https://alvarofo-powergym.onrender.com
+      - key: PORTFOLIO_URL
+        value: https://alvarofernandez03.github.io/

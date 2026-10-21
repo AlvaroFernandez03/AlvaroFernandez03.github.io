@@ -1,0 +1,8 @@
+Tipografías incluidas en esta web, todas con licencia SIL Open Font License 1.1
+(https://openfontlicense.org), que permite usarlas e incluirlas en una web:
+
+- Young Serif      · Copyright 2023 The Young Serif Project Authors (https://github.com/noirblancrouge/YoungSerif)
+- Instrument Sans  · Copyright 2022 The Instrument Sans Project Authors (https://github.com/Instrument/instrument-sans)
+- Martian Mono     · Copyright 2021 The Martian Mono Project Authors (https://github.com/evilmartians/mono)
+
+Descargadas de Google Fonts (subconjunto latino).

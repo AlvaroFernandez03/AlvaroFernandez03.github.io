@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Álvaro Fernández Ortuño · Aplicaciones web a medida</title>
+<meta name="description" content="Desarrollador web full-stack en Albacete. Webs con reservas, cuotas, tienda online y gestión de personal, hechas a medida y funcionando. Prueba mis proyectos en vivo.">
+<meta name="author" content="Álvaro Fernández Ortuño">
+<meta name="theme-color" content="#F2EDE3">
+<link rel="canonical" href="https://alvarofernandez03.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Álvaro Fernández Ortuño · Aplicaciones web a medida">
+<meta property="og:description" content="Webs con reservas, cuotas, tienda online y gestión de personal. Cuatro proyectos completos que puedes probar en vivo.">
+<meta property="og:url" content="https://alvarofernandez03.github.io/">
+<meta property="og:image" content="https://alvarofernandez03.github.io/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fuentes/young-serif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fuentes/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/estilos.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<a class="saltar" href="#proyectos">Saltar a los proyectos</a>
+
+<header class="cabecera" id="cabecera">
+  <div class="contenedor cabecera-fila">
+    <a class="marca" href="#inicio" aria-label="Álvaro Fernández Ortuño, inicio">
+      <span class="marca-sello" aria-hidden="true">AF</span>
+      <span class="marca-nombre">Álvaro Fernández</span>
+    </a>
+    <button class="menu-boton" id="menu-boton" aria-expanded="false" aria-controls="menu">Menú</button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#perfil">Perfil técnico</a>
+      <a class="menu-contacto" href="#contacto">Escríbeme</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- =========================================================== HÉROE -->
+  <section class="heroe">
+    <div class="contenedor heroe-rejilla">
+      <div class="heroe-texto">
+        <p class="etiqueta">Desarrollo web · Albacete y en remoto</p>
+        <h1>Aplicaciones web hechas <span class="cosido">a medida</span>.</h1>
+        <p class="heroe-entrada">
+          Soy <strong>Álvaro Fernández Ortuño</strong>. Diseño y programo webs completas
+          —reservas, cuotas, tiendas online, fichajes— y las dejo funcionando, con su panel
+          para que las gestiones tú.
+        </p>
+        <div class="caminos">
+          <a class="camino" href="#servicios">
+            <span class="camino-quien">¿Tienes un negocio?</span>
+            <span class="camino-que">Mira qué puedo hacer por ti</span>
+            <span class="camino-flecha" aria-hidden="true">→</span>
+          </a>
+          <a class="camino" href="#perfil">
+            <span class="camino-quien">¿Buscas desarrollador?</span>
+            <span class="camino-que">Perfil técnico y código</span>
+            <span class="camino-flecha" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <ul class="cifras" aria-label="En resumen">
+          <li><strong>4</strong> aplicaciones completas, en vivo</li>
+          <li><strong>81</strong> pruebas automáticas en la más grande</li>
+          <li><strong>ASIR</strong> primero de mi promoción</li>
+        </ul>
+      </div>
+
+      <!-- Tapete de corte con las piezas (capturas en móvil de cada proyecto) -->
+      <div class="tapete heroe-tapete" aria-hidden="true">
+        <span class="regla regla-arriba"></span>
+        <span class="regla regla-izq"></span>
+        <figure class="pieza-movil p1"><img src="img/proyectos/academiaapp-m1.webp" alt="" width="520" height="1125"><figcaption>N.º 01 · AcademiaApp</figcaption></figure>
+        <figure class="pieza-movil p2"><img src="img/proyectos/atelier-m1.webp" alt="" width="520" height="1125"><figcaption>N.º 02 · Atelier</figcaption></figure>
+        <figure class="pieza-movil p3"><img src="img/proyectos/ofitrack-m1.webp" alt="" width="520" height="1125"><figcaption>N.º 03 · OfiTrack</figcaption></figure>
+        <figure class="pieza-movil p4"><img src="img/proyectos/powergym-m1.webp" alt="" width="520" height="1125"><figcaption>N.º 04 · PowerGym</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== PROYECTOS -->
+  <section class="seccion" id="proyectos" aria-labelledby="t-proyectos">
+    <div class="contenedor">
+      <header class="seccion-cab aparece">
+        <p class="etiqueta">01 — Proyectos</p>
+        <h2 id="t-proyectos">Cuatro aplicaciones completas, funcionando.</h2>
+        <p class="seccion-sub">Cada una con su servidor, su base de datos y su panel de administración.
+          Puedes probarlas ahora mismo: dentro tienes cuentas de prueba para entrar con un clic.</p>
+      </header>
+
+      <!-- ---------- AcademiaApp ---------- -->
+      <article class="proyecto aparece" id="academiaapp" style="--acento:#F7C51E; --acento-tinta:#0D1B3E">
+        <div class="proyecto-media tapete">
+          <div class="navegador">
+            <div class="navegador-barra"><i></i><i></i><i></i><span>alvarofo-academia.onrender.com</span></div>
+            <img class="navegador-img" src="img/proyectos/academiaapp-d1.webp" alt="Portada de AcademiaApp: el nombre de la academia, sus disciplinas y cifras" width="1280" height="800" loading="lazy">
+          </div>
+          <img class="movil" src="img/proyectos/academiaapp-m2.webp" alt="Horario semanal de AcademiaApp en el móvil" width="520" height="1125" loading="lazy">
+          <div class="miniaturas" role="group" aria-label="Más capturas de AcademiaApp">
+            <button type="button" aria-pressed="true" data-src="img/proyectos/academiaapp-d1.webp" data-alt="Portada de AcademiaApp: el nombre de la academia, sus disciplinas y cifras">Portada</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/academiaapp-d2.webp" data-alt="Horario semanal con reservas, aforo y colores de cinturón por disciplina">Horario</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/academiaapp-d3.webp" data-alt="Panel de administración con el resumen del día">Panel</button>
+          </div>
+        </div>
+        <div class="proyecto-texto pieza">
+          <p class="pieza-num">Pieza 01 / 04</p>
+          <h3>AcademiaApp</h3>
+          <p class="proyecto-tipo">Gestión para una academia de artes marciales</p>
+          <p class="proyecto-reto">Pensada para sustituir el programa de pago de una academia real: familias,
+            horario, reservas, cuotas y pasar lista en una sola app.</p>
+          <ul class="lista-puntada">
+            <li>Una cuenta por familia: se reserva y se paga por los hijos con un solo acceso.</li>
+            <li>Horario con aforo, lista de espera automática y clase de prueba gratis.</li>
+            <li>Cuotas en recepción o con tarjeta (Stripe), con pausas y bajas.</li>
+            <li>Panel de la academia: horario, equipo, alumnos, avisos por email y copias de seguridad.</li>
+          </ul>
+          <ul class="tecnologias" aria-label="Tecnologías">
+            <li>Node.js</li><li>Express</li><li>SQLite</li><li>JWT + bcrypt</li><li>Stripe</li><li>81 pruebas</li>
+          </ul>
+          <div class="proyecto-acciones">
+            <a class="boton-demo" href="https://alvarofo-academia.onrender.com" target="_blank" rel="noopener" data-demo>
+              <span class="luz" aria-hidden="true"></span><span class="boton-demo-texto">Probar la demo</span>
+            </a>
+            <a class="enlace-codigo" href="https://github.com/AlvaroFernandez03/academiaapp" target="_blank" rel="noopener">Ver el código</a>
+          </div>
+          <p class="nota-demo" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- ---------- Atelier ---------- -->
+      <article class="proyecto invertido aparece" id="atelier" style="--acento:#2F3BE0; --acento-tinta:#FFFFFF">
+        <div class="proyecto-media tapete">
+          <div class="navegador">
+            <div class="navegador-barra"><i></i><i></i><i></i><span>alvarofo-atelier.onrender.com</span></div>
+            <img class="navegador-img" src="img/proyectos/atelier-d1.webp" alt="Portada de la tienda Atelier con el mosaico de categorías" width="1280" height="800" loading="lazy">
+          </div>
+          <img class="movil" src="img/proyectos/atelier-m2.webp" alt="Ficha de producto de Atelier en el móvil" width="520" height="1125" loading="lazy">
+          <div class="miniaturas" role="group" aria-label="Más capturas de Atelier">
+            <button type="button" aria-pressed="true" data-src="img/proyectos/atelier-d1.webp" data-alt="Portada de la tienda Atelier con el mosaico de categorías">Portada</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/atelier-d2.webp" data-alt="Ficha de producto con colores, tallas y carrito">Producto</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/atelier-d3.webp" data-alt="Área de cliente con sus pedidos">Pedidos</button>
+          </div>
+        </div>
+        <div class="proyecto-texto pieza">
+          <p class="pieza-num">Pieza 02 / 04</p>
+          <h3>Atelier</h3>
+          <p class="proyecto-tipo">Tienda online de ropa y calzado</p>
+          <p class="proyecto-reto">Una tienda completa, del catálogo al pedido, con devoluciones
+            y un panel para llevar el stock al día.</p>
+          <ul class="lista-puntada">
+            <li>Catálogo con filtros por marca, talla, color y precio, y favoritos.</li>
+            <li>Carrito (también sin cuenta) y una compra que descuenta el stock sin vender de más.</li>
+            <li>Pedidos, devoluciones por unidad y reseñas solo de quien ha comprado.</li>
+            <li>Asistente de tallas que recomienda según la altura y el peso.</li>
+          </ul>
+          <ul class="tecnologias" aria-label="Tecnologías">
+            <li>Node.js</li><li>Express</li><li>SQLite (transacciones)</li><li>JWT</li><li>Emails con Resend</li>
+          </ul>
+          <div class="proyecto-acciones">
+            <a class="boton-demo" href="https://alvarofo-atelier.onrender.com" target="_blank" rel="noopener" data-demo>
+              <span class="luz" aria-hidden="true"></span><span class="boton-demo-texto">Probar la demo</span>
+            </a>
+            <a class="enlace-codigo" href="https://github.com/AlvaroFernandez03/atelier" target="_blank" rel="noopener">Ver el código</a>
+          </div>
+          <p class="nota-demo" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- ---------- OfiTrack ---------- -->
+      <article class="proyecto aparece" id="ofitrack" style="--acento:#2F7A57; --acento-tinta:#FFFFFF">
+        <div class="proyecto-media tapete">
+          <div class="navegador">
+            <div class="navegador-barra"><i></i><i></i><i></i><span>alvarofo-ofitrack.onrender.com</span></div>
+            <img class="navegador-img" src="img/proyectos/ofitrack-d1.webp" alt="Panel de informes de OfiTrack con gráficas de horas y absentismo" width="1280" height="800" loading="lazy">
+          </div>
+          <img class="movil" src="img/proyectos/ofitrack-m1.webp" alt="Pantalla de fichar de OfiTrack en el móvil, con el anillo de la jornada" width="520" height="1125" loading="lazy">
+          <div class="miniaturas" role="group" aria-label="Más capturas de OfiTrack">
+            <button type="button" aria-pressed="true" data-src="img/proyectos/ofitrack-d1.webp" data-alt="Panel de informes de OfiTrack con gráficas de horas y absentismo">Informes</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/ofitrack-d2.webp" data-alt="Pantalla de fichar con el anillo que se llena con la jornada">Fichar</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/ofitrack-d3.webp" data-alt="Ausencias: solicitud y aprobación por el responsable">Ausencias</button>
+          </div>
+        </div>
+        <div class="proyecto-texto pieza">
+          <p class="pieza-num">Pieza 03 / 04</p>
+          <h3>OfiTrack</h3>
+          <p class="proyecto-tipo">Control horario y gestión de personal</p>
+          <p class="proyecto-reto">Para una empresa con varios equipos: fichajes, turnos, ausencias e
+            informes, con lo que cada uno puede ver según su puesto.</p>
+          <ul class="lista-puntada">
+            <li>Fichar con un toque: el anillo se llena con la jornada y avisa de las horas extra.</li>
+            <li>Horas extra calculadas contra el turno de cada día, también de noche.</li>
+            <li>Turnos semanales y ausencias con aprobación y porcentaje de absentismo.</li>
+            <li>Informes con gráficas por empleado y por equipo, en tres niveles de permisos.</li>
+          </ul>
+          <ul class="tecnologias" aria-label="Tecnologías">
+            <li>Node.js</li><li>Express</li><li>SQLite</li><li>Chart.js</li><li>Roles y permisos</li>
+          </ul>
+          <div class="proyecto-acciones">
+            <a class="boton-demo" href="https://alvarofo-ofitrack.onrender.com" target="_blank" rel="noopener" data-demo>
+              <span class="luz" aria-hidden="true"></span><span class="boton-demo-texto">Probar la demo</span>
+            </a>
+            <a class="enlace-codigo" href="https://github.com/AlvaroFernandez03/ofitrack" target="_blank" rel="noopener">Ver el código</a>
+          </div>
+          <p class="nota-demo" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <!-- ---------- PowerGym ---------- -->
+      <article class="proyecto invertido aparece" id="powergym" style="--acento:#D7263D; --acento-tinta:#FFFFFF">
+        <div class="proyecto-media tapete">
+          <div class="navegador">
+            <div class="navegador-barra"><i></i><i></i><i></i><span>alvarofo-powergym.onrender.com</span></div>
+            <img class="navegador-img" src="img/proyectos/powergym-d1.webp" alt="Portada de PowerGym: «Carga la barra. Construye tu mejor versión»" width="1280" height="800" loading="lazy">
+          </div>
+          <img class="movil" src="img/proyectos/powergym-m1.webp" alt="Puerta de entrada de PowerGym en el móvil" width="520" height="1125" loading="lazy">
+          <div class="miniaturas" role="group" aria-label="Más capturas de PowerGym">
+            <button type="button" aria-pressed="true" data-src="img/proyectos/powergym-d1.webp" data-alt="Portada de PowerGym: «Carga la barra. Construye tu mejor versión»">Portada</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/powergym-d2.webp" data-alt="Calendario semanal de clases con colores por intensidad">Clases</button>
+            <button type="button" aria-pressed="false" data-src="img/proyectos/powergym-d3.webp" data-alt="Puerta de entrada animada con el acceso de socios">Entrada</button>
+          </div>
+        </div>
+        <div class="proyecto-texto pieza">
+          <p class="pieza-num">Pieza 04 / 04</p>
+          <h3>PowerGym</h3>
+          <p class="proyecto-tipo">Web para un gimnasio</p>
+          <p class="proyecto-reto">La web de un gimnasio con reservas de verdad: los socios eligen clase en
+            el calendario y el gimnasio las organiza desde su panel.</p>
+          <ul class="lista-puntada">
+            <li>Entrada animada con acceso y registro de socios.</li>
+            <li>Calendario semanal de clases, con reserva y cancelación.</li>
+            <li>Área personal, tablón de peticiones y calculadora de IMC.</li>
+            <li>Entrenador virtual simulado, preparado para conectarlo a una IA real.</li>
+          </ul>
+          <ul class="tecnologias" aria-label="Tecnologías">
+            <li>Node.js</li><li>Express</li><li>SQLite</li><li>JWT</li><li>Emails con Resend</li>
+          </ul>
+          <div class="proyecto-acciones">
+            <a class="boton-demo" href="https://alvarofo-powergym.onrender.com" target="_blank" rel="noopener" data-demo>
+              <span class="luz" aria-hidden="true"></span><span class="boton-demo-texto">Probar la demo</span>
+            </a>
+            <a class="enlace-codigo" href="https://github.com/AlvaroFernandez03/powergym" target="_blank" rel="noopener">Ver el código</a>
+          </div>
+          <p class="nota-demo" aria-live="polite"></p>
+        </div>
+      </article>
+
+      <p class="aviso-demos aparece">Las demos están en un servidor gratuito: si nadie las ha usado en un rato,
+        tardan hasta un minuto en despertar. Esta página las va despertando mientras la lees.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================== SERVICIOS -->
+  <section class="seccion seccion-servicios" id="servicios" aria-labelledby="t-servicios">
+    <div class="contenedor">
+      <header class="seccion-cab aparece">
+        <p class="etiqueta">02 — Para tu negocio</p>
+        <h2 id="t-servicios">Webs que trabajan por ti.</h2>
+        <p class="seccion-sub">No solo que se vean bien: que reserven, cobren y ordenen el día a día.
+          Empiezo por entender cómo funciona tu negocio y te propongo lo que de verdad te ahorra tiempo.</p>
+      </header>
+
+      <div class="servicios">
+        <article class="servicio pieza aparece">
+          <p class="servicio-num">A</p>
+          <h3>Reservas y clases</h3>
+          <p>Para gimnasios, academias, estudios de yoga o centros deportivos. Horario con plazas,
+            lista de espera, cuotas y panel para el equipo.</p>
+          <a class="servicio-ejemplo" href="#academiaapp">Ejemplo: AcademiaApp y PowerGym</a>
+        </article>
+        <article class="servicio pieza aparece">
+          <p class="servicio-num">B</p>
+          <h3>Tienda online</h3>
+          <p>Catálogo, carrito, pedidos, devoluciones y control de stock. Tuya, sin pagar
+            comisiones a una plataforma por cada venta.</p>
+          <a class="servicio-ejemplo" href="#atelier">Ejemplo: Atelier</a>
+        </article>
+        <article class="servicio pieza aparece">
+          <p class="servicio-num">C</p>
+          <h3>Gestión interna</h3>
+          <p>Fichajes, turnos, vacaciones e informes para tu plantilla, con permisos según el
+            puesto de cada persona.</p>
+          <a class="servicio-ejemplo" href="#ofitrack">Ejemplo: OfiTrack</a>
+        </article>
+        <article class="servicio pieza aparece">
+          <p class="servicio-num">D</p>
+          <h3>Web de presentación</h3>
+          <p>Tu negocio en Internet: rápida, clara, que se vea bien en el móvil y con un formulario
+            para que te escriban.</p>
+          <a class="servicio-ejemplo" href="#contacto">Cuéntame qué necesitas</a>
+        </article>
+      </div>
+
+      <div class="proceso aparece">
+        <h3 class="proceso-titulo">Cómo trabajo</h3>
+        <p class="proceso-sub">Como en un taller: primero se toman medidas.</p>
+        <ol class="pasos">
+          <li><span class="paso-num">1</span><h4>Tomar medidas</h4>
+            <p>Hablamos de tu negocio: qué haces, cómo lo llevas hoy y qué te quita tiempo.</p></li>
+          <li><span class="paso-num">2</span><h4>El patrón</h4>
+            <p>Te enseño un primer diseño para ver cómo quedará antes de programar nada.</p></li>
+          <li><span class="paso-num">3</span><h4>Confección</h4>
+            <p>La construyo por partes y la vas probando según avanza, con datos de ejemplo.</p></li>
+          <li><span class="paso-num">4</span><h4>Entrega y arreglos</h4>
+            <p>La publico con tu dominio, te enseño a usarla y sigo a mano para los ajustes.</p></li>
+        </ol>
+        <a class="boton boton-tinta" href="#contacto">Cuéntame tu idea</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== SOBRE MÍ -->
+  <section class="seccion" id="sobre-mi" aria-labelledby="t-sobre-mi">
+    <div class="contenedor sobre-rejilla">
+      <header class="seccion-cab aparece">
+        <p class="etiqueta">03 — Sobre mí</p>
+        <h2 id="t-sobre-mi">De oficio, a medida.</h2>
+        <div class="ficha" role="group" aria-label="Ficha rápida">
+          <p class="ficha-marca">Álvaro Fernández</p>
+          <dl>
+            <div><dt>Hecho en</dt><dd>Albacete</dd></div>
+            <div><dt>Oficio</dt><dd>Tapicero</dd></div>
+            <div><dt>Formación</dt><dd>ASIR, 9 de media</dd></div>
+            <div><dt>Hago</dt><dd>Webs completas, de principio a fin</dd></div>
+            <div><dt>Trabajo</dt><dd>En persona o en remoto</dd></div>
+          </dl>
+        </div>
+      </header>
+      <div class="sobre-texto aparece">
+        <p class="sobre-grande">Vengo de oficios en los que las cosas se hacen bien o se notan.</p>
+        <p>He coordinado un equipo de reparto y almacén en SEUR, he trabajado en producción y control
+          de calidad y hoy soy tapicero. En la tapicería se toman medidas, se corta según patrón y se
+          revisa cada acabado antes de entregar.</p>
+        <p>Programo igual. Estudié el Grado Superior en Administración de Sistemas Informáticos en Red
+          —acabé primero de mi promoción, con un 9 de media—, trabajé como técnico de sistemas y me
+          he especializado en desarrollo web: aplicaciones completas, del servidor y la base de datos
+          a lo que ve el cliente, con su seguridad y sus pruebas.</p>
+        <p>Vivo en Albacete y trabajo también en remoto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== PERFIL -->
+  <section class="seccion seccion-perfil" id="perfil" aria-labelledby="t-perfil">
+    <div class="contenedor">
+      <header class="seccion-cab aparece">
+        <p class="etiqueta">04 — Para empresas</p>
+        <h2 id="t-perfil">Perfil técnico.</h2>
+        <p class="seccion-sub">Desarrollador web full-stack con base en sistemas y redes. Todo el código
+          de los proyectos está publicado y documentado en GitHub.</p>
+      </header>
+
+      <div class="perfil-rejilla">
+        <div class="habilidades aparece">
+          <div class="habilidad"><h3>Backend</h3><p>Node.js, Express, APIs REST, autenticación con JWT y bcrypt, subida de archivos.</p></div>
+          <div class="habilidad"><h3>Bases de datos</h3><p>SQL, SQLite, transacciones, migraciones, copias de seguridad.</p></div>
+          <div class="habilidad"><h3>Frontend</h3><p>HTML, CSS y JavaScript sin frameworks, diseño adaptable al móvil y accesibilidad.</p></div>
+          <div class="habilidad"><h3>Integraciones</h3><p>Pagos con Stripe, emails con Resend y Brevo, gráficas con Chart.js.</p></div>
+          <div class="habilidad"><h3>Calidad y seguridad</h3><p>Pruebas automáticas, Content-Security-Policy, límite de intentos, permisos por rol.</p></div>
+          <div class="habilidad"><h3>Sistemas</h3><p>Windows Server, redes LAN/WAN, soporte a usuarios, despliegue de aplicaciones.</p></div>
+        </div>
+
+        <div class="trayectoria aparece">
+          <h3 class="trayectoria-titulo">Formación</h3>
+          <ol class="linea-tiempo">
+            <li><span class="fecha">2023–2025</span><strong>Grado Superior en ASIR</strong><span>CESUR Murcia · nota media 9, primero de la promoción</span></li>
+            <li><span class="fecha">2025</span><strong>Web Development Fundamentals</strong><span>IBM SkillsBuild</span></li>
+            <li><span class="fecha">2024</span><strong>Introducción a la Ciberseguridad</strong><span>Cisco Networking Academy</span></li>
+          </ol>
+          <h3 class="trayectoria-titulo">Experiencia</h3>
+          <ol class="linea-tiempo">
+            <li><span class="fecha">2025–hoy</span><strong>Tapicero</strong><span>Sistemas Dinámicos P3</span></li>
+            <li><span class="fecha">2025</span><strong>Técnico de sistemas</strong><span>Grupo SIM · soporte, servidores, redes y copias</span></li>
+            <li><span class="fecha">2021–2023</span><strong>Técnico de mantenimiento y producción</strong><span>Dekora</span></li>
+            <li><span class="fecha">2019–2021</span><strong>Encargado de logística y operaciones</strong><span>SEUR · coordinación de un equipo de reparto y almacén</span></li>
+          </ol>
+          <p class="idiomas">Castellano nativo · Inglés B2 · Carné B y vehículo propio</p>
+          <div class="perfil-enlaces">
+            <a class="boton boton-tinta" href="https://github.com/AlvaroFernandez03" target="_blank" rel="noopener">GitHub</a>
+            <a class="boton boton-borde" href="https://www.linkedin.com/in/%C3%A1lvaro-fern%C3%A1ndez-ortu%C3%B1o-651114183/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== CONTACTO -->
+  <section class="seccion seccion-contacto tapete" id="contacto" aria-labelledby="t-contacto">
+    <div class="contenedor contacto-rejilla">
+      <header class="contacto-cab aparece">
+        <p class="etiqueta">05 — Contacto</p>
+        <h2 id="t-contacto">Hablemos.</h2>
+        <p class="seccion-sub">Cuéntame qué necesitas o qué buscas y te respondo lo antes posible.</p>
+        <ul class="contacto-datos">
+          <li><span>Email</span><a href="mailto:lalo3102000@gmail.com">lalo3102000@gmail.com</a>
+            <button type="button" class="copiar" data-copiar="lalo3102000@gmail.com">Copiar</button></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/%C3%A1lvaro-fern%C3%A1ndez-ortu%C3%B1o-651114183/" target="_blank" rel="noopener">Álvaro Fernández Ortuño</a></li>
+          <li><span>GitHub</span><a href="https://github.com/AlvaroFernandez03" target="_blank" rel="noopener">AlvaroFernandez03</a></li>
+          <li><span>Dónde</span>Albacete · también en remoto</li>
+        </ul>
+      </header>
+
+      <form class="formulario pieza aparece" id="formulario" novalidate>
+        <p class="pieza-num">Tu mensaje</p>
+        <div class="campo">
+          <label for="f-nombre">Tu nombre</label>
+          <input id="f-nombre" name="nombre" autocomplete="name" required>
+        </div>
+        <div class="campo">
+          <label for="f-motivo">Te escribo por</label>
+          <select id="f-motivo" name="motivo">
+            <option>Una web para mi negocio</option>
+            <option>Una oferta de empleo</option>
+            <option>Otra cosa</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="f-mensaje">Mensaje</label>
+          <textarea id="f-mensaje" name="mensaje" rows="5" required placeholder="Qué haces, qué te gustaría tener, plazos…"></textarea>
+        </div>
+        <button class="boton boton-tinta" type="submit">Preparar el email</button>
+        <p class="formulario-nota" id="f-nota" aria-live="polite">Se abre tu programa de correo con el mensaje listo para enviar.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor pie-fila">
+    <p>© 2026 Álvaro Fernández Ortuño</p>
+    <p>Hecho a mano con HTML, CSS y JavaScript · <a href="https://github.com/AlvaroFernandez03/AlvaroFernandez03.github.io" target="_blank" rel="noopener">código de esta web</a></p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
