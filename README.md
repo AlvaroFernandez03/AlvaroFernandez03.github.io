@@ -17,15 +17,15 @@ para un negocio y mi perfil técnico.
 HTML, CSS y JavaScript sin librerías ni pasos de compilación. Se publica tal
 cual con GitHub Pages.
 
-- **La idea visual** viene de mi oficio, la tapicería: el tapete verde de
-  corte con su cuadrícula y su regla, las piezas de patrón con el margen de
-  costura discontinuo, las puntadas y la cinta métrica.
-- **La luz de cada demo.** Las demos viven en el plan gratuito de Render, que
-  las duerme tras un rato sin visitas. Cuando un proyecto se acerca a la
-  pantalla, la página llama a su `/api/health` para despertarlo y la luz del
-  botón cuenta cómo va: amarilla mientras despierta, verde cuando está lista.
-- Las tipografías (Young Serif, Instrument Sans y Martian Mono) van dentro del
-  proyecto, así que la página no pide nada a otros servidores.
+- **Panel de estado en la portada.** Las demos viven en el plan gratuito de
+  Render, que las pone en reposo tras un rato sin visitas. Al abrir la página
+  se consulta el `/api/health` de cada una: el panel dice si está en línea
+  (y cuánto tarda en responder) o si está arrancando, y la misma luz sale en
+  el botón «Probar la demo» de cada proyecto.
+- **Estilo:** fondo grafito casi sin color; el color solo indica estado (las
+  luces) o la marca de cada aplicación.
+- Las tipografías (Martian Mono e Instrument Sans) van dentro del proyecto,
+  así que la página no pide nada a otros servidores.
 - Adaptada al móvil, navegable con teclado y respeta «reducir movimiento».
 
 ## Archivos
@@ -34,7 +34,7 @@ cual con GitHub Pages.
 index.html          la página
 404.html            página de error
 css/estilos.css     estilos
-js/main.js          menú, galerías, formulario y luz de las demos
+js/main.js          menú, panel de estado, galerías y formulario
 fuentes/            tipografías (woff2)
 img/                capturas de los proyectos, icono e imagen para redes
 render.yaml         las cuatro demos en Render (Blueprint)

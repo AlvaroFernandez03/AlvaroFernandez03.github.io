@@ -1,7 +1,7 @@
 // Portfolio de Álvaro Fernández Ortuño — interacción de la página.
-// Sin librerías: menú del móvil, aparición al bajar, galería de capturas,
-// copiar el email, el formulario (prepara un email) y la luz de cada demo,
-// que despierta su servidor mientras lees.
+// Sin librerías: menú del móvil, panel de estado de las demos (consulta de
+// verdad cada servidor), galería de capturas, copiar el email y el
+// formulario, que prepara un email.
 (() => {
   "use strict";
 
@@ -38,32 +38,13 @@
     const vistaSeccion = new IntersectionObserver((entradas) => {
       for (const e of entradas) {
         const enlace = enlacesMenu.get(e.target.id);
-        if (enlace && e.isIntersecting) {
-          enlacesMenu.forEach((a) => { a.classList.remove("activo"); a.removeAttribute("aria-current"); });
-          enlace.classList.add("activo");
-          enlace.setAttribute("aria-current", "true");
-        }
+        if (!enlace || !e.isIntersecting) continue;
+        enlacesMenu.forEach((a) => { a.classList.remove("activo"); a.removeAttribute("aria-current"); });
+        enlace.classList.add("activo");
+        enlace.setAttribute("aria-current", "true");
       }
     }, { rootMargin: "-45% 0px -50% 0px" });
     enlacesMenu.forEach((_, id) => { const s = document.getElementById(id); if (s) vistaSeccion.observe(s); });
-  }
-
-  /* ---------------------------------------------- Aparecer al bajar */
-  const aparecen = $$(".aparece");
-  const mostrar = (el) => {
-    el.classList.add("visto");
-    // Terminada la entrada, cada pieza recupera sus propias transiciones (hover...).
-    if (!el.classList.contains("proyecto")) setTimeout(() => el.classList.remove("aparece"), 1400);
-  };
-  if ("IntersectionObserver" in window && !reducido) {
-    const vista = new IntersectionObserver((entradas) => {
-      for (const e of entradas) {
-        if (e.isIntersecting) { mostrar(e.target); vista.unobserve(e.target); }
-      }
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.06 });
-    aparecen.forEach((el) => vista.observe(el));
-  } else {
-    aparecen.forEach(mostrar);
   }
 
   /* ------------------------------------------------ Galería de capturas */
@@ -78,8 +59,8 @@
       const nueva = new Image();
       nueva.src = boton.dataset.src;
       img.classList.add("cambiando");
-      const listo = nueva.decode ? nueva.decode().catch(() => {}) : Promise.resolve();
-      Promise.all([listo, new Promise((r) => setTimeout(r, reducido ? 0 : 180))]).then(() => {
+      const lista = nueva.decode ? nueva.decode().catch(() => {}) : Promise.resolve();
+      Promise.all([lista, new Promise((r) => setTimeout(r, reducido ? 0 : 160))]).then(() => {
         if (turno !== pedida) return;
         img.src = boton.dataset.src;
         img.alt = boton.dataset.alt || "";
@@ -110,7 +91,7 @@
         try { ok = document.execCommand("copy"); } catch (_) { ok = false; }
         area.remove();
       }
-      boton.textContent = ok ? "¡Copiado!" : "Cópialo a mano";
+      boton.textContent = ok ? "Copiado" : "Cópialo a mano";
       boton.classList.toggle("hecho", ok);
       clearTimeout(boton._espera);
       boton._espera = setTimeout(() => { boton.textContent = "Copiar"; boton.classList.remove("hecho"); }, 2200);
@@ -154,46 +135,65 @@
     });
   }
 
-  /* ------------------------------------------------- Luz de las demos
-     Las demos están en el plan gratuito de Render: se duermen tras 15 minutos
-     sin visitas y tardan un minuto en despertar. Cuando un proyecto se acerca
-     a la pantalla, se llama a su /api/health para despertarlo y la luz dice
-     cómo va: gris (sin mirar), amarilla (despertando), verde (lista). */
+  /* ------------------------------------- Estado de las demos (en vivo)
+     Las demos están en el plan gratuito de Render: se duermen tras 15
+     minutos sin visitas y tardan un minuto en arrancar. Al abrir la página
+     se pregunta a /api/health de cada una; la misma luz sale en el panel
+     de la portada y en el botón de cada proyecto:
+     gris (sin comprobar), ámbar (arrancando), verde (en línea), roja (no responde). */
   const ESPERA_MAXIMA = 150000;
-  const demos = $$("a[data-demo]").map((boton) => ({
-    boton,
-    url: boton.href.replace(/\/+$/, ""),
-    texto: $(".boton-demo-texto", boton),
-    nota: $(".nota-demo", boton.closest(".proyecto-texto")),
-    estado: "",
-    inicio: 0,
-  }));
+  const normal = (url) => url.replace(/\/+$/, "");
+  const demos = $$(".estado-fila[data-demo]").map((fila) => {
+    const url = normal(fila.dataset.demo);
+    const boton = $$("a[data-demo]").find((a) => normal(a.href) === url) || null;
+    return {
+      url, fila, boton,
+      valor: $(".estado-valor", fila),
+      texto: boton && $(".boton-demo-texto", boton),
+      nota: boton && $(".nota-demo", boton.closest(".proyecto-texto")),
+      estado: "", inicio: 0, ms: 0,
+    };
+  });
+  const resumen = $("#estado-resumen");
 
-  function pintar(demo, estado) {
-    demo.estado = estado;
-    demo.boton.dataset.estado = estado;
-    const segundos = Math.max(1, Math.round((Date.now() - demo.inicio) / 1000));
-    if (estado === "despertando") {
-      demo.texto.textContent = `Despertando… ${segundos} s`;
-      if (!demo.nota.textContent) {
-        demo.nota.textContent = "Estaba dormida (servidor gratuito). Tarda hasta un minuto; puedes abrirla ya y esperar allí.";
-      }
-    } else if (estado === "lista") {
-      demo.texto.textContent = "Probar la demo";
-      demo.nota.textContent = "Lista. Dentro tienes las cuentas de prueba para entrar con un clic.";
-    } else if (estado === "error") {
-      demo.texto.textContent = "Probar la demo";
-      demo.nota.textContent = "Está tardando más de lo normal. Ábrela igualmente y, si no carga, prueba en un rato.";
-    }
+  function pintarResumen() {
+    const enLinea = demos.filter((d) => d.estado === "lista").length;
+    const pendientes = demos.filter((d) => d.estado === "comprobando" || d.estado === "despertando").length;
+    if (!demos.some((d) => d.estado)) resumen.textContent = "Sin comprobar";
+    else if (pendientes) resumen.textContent = `${enLinea} de ${demos.length} en línea · comprobando`;
+    else resumen.textContent = `${enLinea} de ${demos.length} en línea`;
   }
 
-  async function responde(url, ms) {
+  function pintar(demo, estado) {
+    const cambio = demo.estado !== estado;
+    demo.estado = estado;
+    demo.fila.dataset.estado = estado;
+    if (demo.boton) demo.boton.dataset.estado = estado;
+    const segundos = Math.max(1, Math.round((Date.now() - demo.inicio) / 1000));
+
+    if (estado === "comprobando") demo.valor.textContent = "comprobando…";
+    else if (estado === "despertando") demo.valor.textContent = `arrancando · ${segundos} s`;
+    else if (estado === "lista") demo.valor.textContent = `en línea · ${demo.ms} ms`;
+    else if (estado === "error") demo.valor.textContent = "no responde";
+
+    if (demo.texto) demo.texto.textContent = estado === "despertando" ? `Arrancando… ${segundos} s` : "Probar la demo";
+    if (demo.nota && cambio) {
+      if (estado === "despertando") demo.nota.textContent = "Estaba en reposo (servidor gratuito). Tarda hasta un minuto; puedes abrirla ya y esperar allí.";
+      else if (estado === "lista") demo.nota.textContent = "En línea. Dentro tienes las cuentas de prueba para entrar con un clic.";
+      else if (estado === "error") demo.nota.textContent = "Ahora mismo no responde. Ábrela igualmente y, si no carga, prueba en un rato.";
+    }
+    if (cambio) pintarResumen();
+  }
+
+  async function consultar(demo, ms) {
     const control = new AbortController();
     const reloj = setTimeout(() => control.abort(), ms);
+    const t0 = performance.now();
     try {
-      const r = await fetch(`${url}/api/health`, { mode: "cors", cache: "no-store", signal: control.signal });
+      const r = await fetch(`${demo.url}/api/health`, { mode: "cors", cache: "no-store", signal: control.signal });
       if (!r.ok) return false;
       const datos = await r.json();
+      demo.ms = Math.round(performance.now() - t0);
       return datos && datos.status === "ok";
     } catch (_) {
       return false;
@@ -202,16 +202,21 @@
     }
   }
 
-  async function despertar(demo) {
-    if (demo.estado) return;
-    demo.estado = "comprobando";
+  async function comprobar(demo) {
+    if (demo.estado === "comprobando" || demo.estado === "despertando") return;
     demo.inicio = Date.now();
-    // Si ya estaba despierta, contesta enseguida y no hace falta enseñar nada más.
-    if (await responde(demo.url, 2500)) return pintar(demo, "lista");
+    pintar(demo, "comprobando");
+    // Si ya estaba en marcha, contesta enseguida.
+    if (await consultar(demo, 3000)) return pintar(demo, "lista");
     pintar(demo, "despertando");
     const contador = setInterval(() => { if (demo.estado === "despertando") pintar(demo, "despertando"); }, 1000);
     while (Date.now() - demo.inicio < ESPERA_MAXIMA) {
-      if (await responde(demo.url, 20000)) { clearInterval(contador); return pintar(demo, "lista"); }
+      if (await consultar(demo, 20000)) {
+        clearInterval(contador);
+        // Recién arrancada, la primera respuesta es lenta: se mide otra vez.
+        await consultar(demo, 5000);
+        return pintar(demo, "lista");
+      }
       await new Promise((r) => setTimeout(r, 3000));
     }
     clearInterval(contador);
@@ -219,22 +224,14 @@
   }
 
   if (demos.length && location.protocol.startsWith("http")) {
+    // Las cuatro a la vez, con un pequeño escalonado para que se vea fila a fila.
+    demos.forEach((demo, i) => setTimeout(() => comprobar(demo), reducido ? 0 : 250 + i * 180));
+    // Si una falló, al pasar por su botón se vuelve a intentar.
     for (const demo of demos) {
-      demo.boton.addEventListener("pointerenter", () => despertar(demo), { once: true });
-      demo.boton.addEventListener("focus", () => despertar(demo), { once: true });
-    }
-    if ("IntersectionObserver" in window) {
-      const cerca = new IntersectionObserver((entradas) => {
-        for (const e of entradas) {
-          if (!e.isIntersecting) continue;
-          const demo = demos.find((d) => e.target.contains(d.boton));
-          if (demo) despertar(demo);
-          cerca.unobserve(e.target);
-        }
-      }, { rootMargin: "300px 0px" });
-      demos.forEach((d) => cerca.observe(d.boton.closest(".proyecto")));
-    } else {
-      demos.forEach(despertar);
+      if (!demo.boton) continue;
+      const otraVez = () => { if (demo.estado === "error") comprobar(demo); };
+      demo.boton.addEventListener("pointerenter", otraVez);
+      demo.boton.addEventListener("focus", otraVez);
     }
   }
 })();
